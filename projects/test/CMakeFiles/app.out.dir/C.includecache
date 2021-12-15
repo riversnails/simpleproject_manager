@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ubuntu/dev/test_projects/cmake_project/projects/main/source/custom_math.c
+custom_math.h
+/home/ubuntu/dev/test_projects/cmake_project/projects/main/source/custom_math.h
+
+/home/ubuntu/dev/test_projects/cmake_project/projects/main/source/main.c
+stdio.h
+-
+main.h
+/home/ubuntu/dev/test_projects/cmake_project/projects/main/source/main.h
+
+include/custom_math.h
+
+include/main.h
+custom_math.h
+include/custom_math.h
+

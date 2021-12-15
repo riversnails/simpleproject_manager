@@ -1,0 +1,1 @@
+/usr/bin/cc   -rdynamic CMakeFiles/app.out.dir/source/custom_math.o CMakeFiles/app.out.dir/source/main.o  -o app.out 
