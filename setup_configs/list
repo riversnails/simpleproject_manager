@@ -1,0 +1,22 @@
+
+MODULE_LISTS=( "help.sh" )
+
+
+MODULE_COUNT=0
+MODULE_NAME=${MODULE_LISTS[0]}
+
+echo $MODULE_NAME
+
+while [ "$MODULE_NAME" != "" ]; do
+	MODULE_PATH="./setup_configs/$MODULE_NAME"
+	
+	if [ "$(check_file $MODULE_PATH)" == "true" ]; then
+		source "./setup_configs/$MODULE_NAME"
+	else
+        	echo "not found setup_configs file $MODULE_NAME!"
+        	echo ""
+        	exit 1
+	fi
+	MODULE_COUNT=$((MODULE_COUNT+1))
+	MODULE_NAME=${MODULE_LISTS[$MODULE_COUNT]}
+done
