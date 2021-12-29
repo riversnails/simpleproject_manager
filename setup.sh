@@ -2,6 +2,7 @@
 
 FILE_PATH=$(cd "$(dirname "$0")" ; pwd -P)
 PROJECTS_PATH="${FILE_PATH}/projects"
+SETUP_PATH="./setup_configs"
 
 CMAKE_LIST_PATH="CMakeLists.txt"
 
@@ -28,21 +29,22 @@ function check_path(){
 	fi
 }
 
-function help(){
+function check_file(){
 
-	if [ "$1" == "" ]; then
-		echo -e \
-	"\
-list - show projects list\n\
-add - create new project\n\
-remove - remove project\n\
-update - update cmake list\n\
-build - cmake list and make out file\n\
-"
-
+	if [ -e "$1" ]; then
+		echo true
+	else
+		echo false
 	fi
-
 }
+
+if [ "$(check_path $SETUP_PATH)" == "true" ]; then
+	source "./setup_configs/list"
+else
+	echo "not found setup_configs folder!"
+	echo ""
+	exit 1
+fi
 
 function show_list(){
 
@@ -291,7 +293,6 @@ function rename(){
 
 echo ""
 
-
 if [ "$1" == "list" ]; then
 	show_list $2 $3 $4
 
@@ -314,7 +315,8 @@ elif [ "$1" == "help" ]; then
 	help $2
 
 else
-	echo "no argument!"
+	echo "no argument! if you need help, give 'help' argument"
+	echo ""
 	exit 1
 fi
 
